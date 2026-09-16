@@ -3,6 +3,7 @@ require("plugins.rustaceanvim")
 -- Plugins ---------------------------------------------------------------------
 
 local plugins = {
+	{ src = "https://github.com/chomosuke/typst-preview.nvim" },
 	{ src = "https://github.com/folke/snacks.nvim" },
 	{ src = "https://github.com/nvim-tree/nvim-web-devicons" },
 	{ src = "https://github.com/nvim-treesitter/nvim-treesitter", version = "main" },
@@ -20,7 +21,7 @@ local plugins = {
 	{ src = "https://github.com/GustavEikaas/easy-dotnet.nvim" },
 	{ src = "https://github.com/nvim-lua/plenary.nvim" },
 	{ src = "https://github.com/nvim-lualine/lualine.nvim" },
-	{ src = "https://github.com/bluz71/vim-moonfly-colors", name = "moonfly" },
+	{ src = "https://github.com/catppuccin/nvim", name = "catppuccin" },
 	{ src = "https://github.com/alexghergh/nvim-tmux-navigation" },
 	{ src = "https://github.com/mfussenegger/nvim-dap" },
 	{ src = "https://github.com/igorlfs/nvim-dap-view" },
@@ -73,8 +74,8 @@ require("lualine").setup({
 -- LSP ---------------------------------------------------------------------------
 
 vim.lsp.enable({
+	"tinymist",
 	"lua_ls",
-	"rust_analyzer",
 	"ts_ls",
 	"yamlls",
 	"jsonls",
@@ -90,13 +91,13 @@ require("fidget").setup()
 
 -- Theme -------------------------------------------------------------------------
 
-vim.g.moonflyCursorColor = true
-vim.g.moonflyNormalPmenu = true
-vim.g.moonflyNormalFloat = true
-vim.g.moonflyUnderlineMatchParen = true
-vim.g.moonflyVirtualTextColor = true
-vim.g.moonflyWinSeparator = 2
-vim.cmd.colorscheme("moonfly")
+require("catppuccin").setup({
+	term_colors = true,
+	dim_inactive = {
+		enabled = true,
+	},
+})
+vim.cmd.colorscheme("catppuccin-mocha")
 
 -- Snippets ----------------------------------------------------------------------
 
